@@ -1,5 +1,5 @@
 {
-  "r3m_io-event-cli": {
+  "r3m_io-keyboard-cli": {
     "path": "r3m_io\/keyboard",
     "controller": "Package.R3m_io.Keyboard.Controller.Cli.run",
     "language": "en",
