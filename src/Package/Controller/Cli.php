@@ -1,27 +1,23 @@
 <?php
 namespace Package\R3m_io\Keyboard\Controller;
 
-
+use Exception;
 use R3m\Io\App;
-
+use R3m\Io\Exception\LocateException;
+use R3m\Io\Exception\ObjectException;
+use R3m\Io\Exception\UrlEmptyException;
+use R3m\Io\Exception\UrlNotExistException;
 use R3m\Io\Module\Controller;
 use R3m\Io\Module\Data;
 use R3m\Io\Module\Dir;
 use R3m\Io\Module\File;
 
-use Exception;
-
-use R3m\Io\Exception\LocateException;
-use R3m\Io\Exception\ObjectException;
-use R3m\Io\Exception\UrlEmptyException;
-use R3m\Io\Exception\UrlNotExistException;
-
 class Cli extends Controller {
     const DIR = __DIR__ . '/';
-    const MODULE_INFO = 'Info';
+    const MODULE_INFO = 'info';
     const INFO = [
-        '{{binary()}} r3m_io/event                   | Event (Object store) options',
-        '{{binary()}} r3m_io/event setup             | Event setup'
+        '{{binary()}} r3m_io/keyboard                | Keyboard (Object store) options',
+        '{{binary()}} r3m_io/keyboard setup          | Keyboard setup'
     ];
 
     /**
@@ -49,6 +45,7 @@ class Cli extends Controller {
             'Validator' .
             $object->config('ds')
         );
+        $url = false;
         $autoload = [];
         $data = new Data();
 //        $data->set('prefix', 'Node');
@@ -57,13 +54,14 @@ class Cli extends Controller {
 //        $data->clear();
 //        $data->set('autoload', $autoload);
 //        Cli::autoload($object, $data);
-        $node = $object->request(0);
-        $scan = Cli::scan($object);
-        $module = $object->parameter($object, $node, 1);
+        $package = strtolower($object->request(0));
+        $object->request('package', $package);
+        $scan = Cli::scan($object, $package);
+        $module = App::parameter($object, $package, 1);
         if(!in_array($module, $scan['module'])){
             $module = Cli::MODULE_INFO;
         }
-        $submodule = $object->parameter($object, $node, 2);
+        $submodule = App::parameter($object, $package, 2);
         if(
             !in_array(
                 $submodule,
@@ -73,7 +71,7 @@ class Cli extends Controller {
         ){
             $submodule = false;
         }
-        $command = $object->parameter($object, $node, 3);
+        $command = App::parameter($object, $package, 3);
         if(
             !in_array(
                 $command,
@@ -85,7 +83,7 @@ class Cli extends Controller {
         ){
             $command = false;
         }
-        $subcommand = $object->parameter($object, $node, 4);
+        $subcommand = App::parameter($object, $package, 4);
         if(
             !in_array(
                 $subcommand,
@@ -98,7 +96,7 @@ class Cli extends Controller {
         ){
             $subcommand = false;
         }
-        $action = $object->parameter($object, $node, 5);
+        $action = App::parameter($object, $package, 5);
         if(
             !in_array(
                 $action,
@@ -112,7 +110,7 @@ class Cli extends Controller {
         ){
             $action = false;
         }
-        $subaction = $object->parameter($object, $node, 6);
+        $subaction = App::parameter($object, $package, 6);
         if(
             !in_array(
                 $subaction,
@@ -127,7 +125,7 @@ class Cli extends Controller {
         ){
             $subaction = false;
         }
-        $category = $object->parameter($object, $node, 7);
+        $category = App::parameter($object, $package, 7);
         if(
             !in_array(
                 $category,
@@ -143,7 +141,7 @@ class Cli extends Controller {
         ){
             $category = false;
         }
-        $subcategory = $object->parameter($object, $node, 8);
+        $subcategory = App::parameter($object, $package, 8);
         if(
             !in_array(
                 $subcategory,
@@ -171,6 +169,14 @@ class Cli extends Controller {
                 !empty($category) &&
                 !empty($subcategory)
             ){
+                $object->request('module', $module);
+                $object->request('submodule', $submodule);
+                $object->request('command', $command);
+                $object->request('subcommand', $subcommand);
+                $object->request('action', $action);
+                $object->request('subaction', $subaction);
+                $object->request('category', $category);
+                $object->request('subcategory', $subcategory);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module) .
@@ -199,6 +205,13 @@ class Cli extends Controller {
                 !empty($subaction) &&
                 !empty($category)
             ){
+                $object->request('module', $module);
+                $object->request('submodule', $submodule);
+                $object->request('command', $command);
+                $object->request('subcommand', $subcommand);
+                $object->request('action', $action);
+                $object->request('subaction', $subaction);
+                $object->request('category', $category);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module) .
@@ -224,6 +237,12 @@ class Cli extends Controller {
                 !empty($action) &&
                 !empty($subaction)
             ){
+                $object->request('module', $module);
+                $object->request('submodule', $submodule);
+                $object->request('command', $command);
+                $object->request('subcommand', $subcommand);
+                $object->request('action', $action);
+                $object->request('subaction', $subaction);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module) .
@@ -246,6 +265,11 @@ class Cli extends Controller {
                 !empty($subcommand) &&
                 !empty($action)
             ){
+                $object->request('module', $module);
+                $object->request('submodule', $submodule);
+                $object->request('command', $command);
+                $object->request('subcommand', $subcommand);
+                $object->request('action', $action);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module) .
@@ -265,6 +289,10 @@ class Cli extends Controller {
                 !empty($command) &&
                 !empty($subcommand)
             ){
+                $object->request('module', $module);
+                $object->request('submodule', $submodule);
+                $object->request('command', $command);
+                $object->request('subcommand', $subcommand);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module) .
@@ -281,6 +309,9 @@ class Cli extends Controller {
                 !empty($submodule) &&
                 !empty($command)
             ){
+                $object->request('module', $module);
+                $object->request('submodule', $submodule);
+                $object->request('command', $command);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module) .
@@ -294,6 +325,8 @@ class Cli extends Controller {
                 !empty($module) &&
                 !empty($submodule)
             ){
+                $object->request('module', $module);
+                $object->request('submodule', $submodule);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module) .
@@ -304,21 +337,22 @@ class Cli extends Controller {
             elseif(
                 !empty($module)
             ){
+                $object->request('module', $module);
                 $url = Cli::locate(
                     $object,
                     ucfirst($module)
                 );
             }
-            return Cli::response($object, $url);
+            if($url){
+                return Cli::response($object, $url);
+            }
         } catch (Exception | UrlEmptyException | UrlNotExistException | LocateException $exception){
             return $exception;
         }
+        return null;
     }
 
-    /**
-     * @throws Exception
-     */
-    private static function scan(App $object): array
+    private static function scan(App $object, $package=''): array
     {
         $scan = [
             'module' => [],
@@ -329,9 +363,11 @@ class Cli extends Controller {
             'subaction' => [],
             'category' => [],
             'subcategory' => []
-
         ];
-        $url = $object->config('controller.dir.view');
+        $url = $object->config('controller.dir.root') .
+            'View' .
+            $object->config('ds')
+        ;
         if(!Dir::exist($url)){
             return $scan;
         }
@@ -340,41 +376,82 @@ class Cli extends Controller {
         if(!$read){
             return $scan;
         }
-
         foreach($read as $nr => $file){
             if($file->type !== File::TYPE){
                 continue;
             }
             $part = substr($file->url, strlen($url));
-            $explode = explode('/', $part, 2);
+            $explode = explode('/', $part, 8);
+            if(array_key_exists(0, $explode) === false){
+                continue;
+            }
+            $module = false;
             $submodule = false;
             $command = false;
             $subcommand = false;
-
-            if(array_key_exists(1, $explode)){
-                $module = strtolower($explode[0]);
-                $temp = explode('.', $explode[1]);
-                array_pop($temp);
-                $submodule = strtolower($temp[0]);
+            $action = false;
+            $subaction = false;
+            $category = false;
+            $subcategory = false;
+            if(array_key_exists(0, $explode)){
+                $module = strtolower(File::basename($explode[0], $object->config('extension.tpl')));
+                $temp = explode('.', $module, 2);
                 if(array_key_exists(1, $temp)){
-                    $command = strtolower($temp[1]);
+                    $module = $temp[0];
+                    $submodule = $temp[1];
+                } else {
+                    if(array_key_exists(1, $explode)){
+                        $submodule = strtolower(File::basename($explode[1], $object->config('extension.tpl')));
+                        $temp = explode('.', $submodule, 2);
+                        if(array_key_exists(1, $temp)){
+                            $submodule = $temp[0];
+                            $command = $temp[1];
+                        }
+                    }
                 }
-                if(array_key_exists(2, $temp)){
-                    $subcommand = strtolower($temp[1]);
-                }
-            } else {
-                $temp = explode('.', $explode[0]);
-                array_pop($temp);
-                $module = strtolower($temp[0]);
+            }
+            if(array_key_exists(2, $explode)){
+                $command = strtolower(File::basename($explode[2], $object->config('extension.tpl')));
+                $temp = explode('.', $command, 2);
                 if(array_key_exists(1, $temp)){
-                    $submodule = strtolower($temp[1]);
+                    $command = $temp[0];
+                    $subcommand = $temp[1];
                 }
-                if(array_key_exists(2, $temp)){
-                    $command = strtolower($temp[1]);
+            }
+            if(array_key_exists(3, $explode) && $subcommand === false){
+                $subcommand = strtolower(File::basename($explode[3], $object->config('extension.tpl')));
+                $temp = explode('.', $subcommand, 2);
+                if(array_key_exists(1, $temp)){
+                    $subcommand = $temp[0];
+                    $action = $temp[1];
                 }
-                if(array_key_exists(3, $temp)){
-                    $subcommand = strtolower($temp[1]);
+            }
+            if(array_key_exists(4, $explode) && $action === false){
+                $action = strtolower(File::basename($explode[4], $object->config('extension.tpl')));
+                $temp = explode('.', $subcommand, 2);
+                if(array_key_exists(1, $temp)){
+                    $action = $temp[0];
+                    $subaction = $temp[1];
                 }
+            }
+            if(array_key_exists(5, $explode) && $subaction === false){
+                $subaction = strtolower(File::basename($explode[5], $object->config('extension.tpl')));
+                $temp = explode('.', $subaction, 2);
+                if(array_key_exists(1, $temp)){
+                    $subaction = $temp[0];
+                    $category = $temp[1];
+                }
+            }
+            if(array_key_exists(6, $explode) && $category === false){
+                $category = strtolower(File::basename($explode[6], $object->config('extension.tpl')));
+                $temp = explode('.', $category, 2);
+                if(array_key_exists(1, $temp)){
+                    $category = $temp[0];
+                    $subcategory = $temp[1];
+                }
+            }
+            if(array_key_exists(7, $explode) && $subcategory === false){
+                $subcategory = strtolower(File::basename($explode[7], $object->config('extension.tpl')));
             }
             if(
                 !in_array(
@@ -414,6 +491,46 @@ class Cli extends Controller {
                 )
             ){
                 $scan['subcommand'][] = $subcommand;
+            }
+            if(
+                $action &&
+                !in_array(
+                    $action,
+                    $scan['action'],
+                    true
+                )
+            ){
+                $scan['action'][] = $subcommand;
+            }
+            if(
+                $subaction &&
+                !in_array(
+                    $subaction,
+                    $scan['subaction'],
+                    true
+                )
+            ){
+                $scan['subaction'][] = $subcommand;
+            }
+            if(
+                $category &&
+                !in_array(
+                    $category,
+                    $scan['category'],
+                    true
+                )
+            ){
+                $scan['category'][] = $category;
+            }
+            if(
+                $subcategory &&
+                !in_array(
+                    $subcategory,
+                    $scan['subcategory'],
+                    true
+                )
+            ){
+                $scan['subcategory'][] = $subcategory;
             }
         }
         return $scan;
