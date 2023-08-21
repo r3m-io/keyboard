@@ -1,0 +1,37 @@
+{
+  "Node": {
+    "#class": "Keyboard",
+    "type": "object",
+    "property": [
+      {
+        "name": "url",
+        "type": "string"
+      },
+      {
+        "name": "key",
+        "type": "string"
+      },
+      {
+        "name": "function",
+        "type": "array"
+      },
+      {
+        "name": "uuid",
+        "type": "uuid"
+      },
+      {
+        "name": "#class",
+        "type": "string"
+      }
+    ]
+  },
+  "sort": [
+    "url, key"
+  ],
+  "is.unique": [
+    "url, key"
+  ],
+  "sync" : {
+    "interval": 60
+  }
+}

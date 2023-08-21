@@ -1,0 +1,106 @@
+{
+    "Keyboard": {
+        "create": {
+            "validate": {
+                "uuid": [
+                    {
+                        "is.uuid": true
+                    }
+                ],
+                "key": [
+                    {
+                        "is.unique": {
+                            "class": "Keyboard",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-key.btree",
+                            "attribute": [
+                                "url",
+                                "key"
+                            ]
+                        }
+                    },
+                    {
+                        "string.length" : ">=1"
+                    }
+                ],
+                "url": [
+                    {
+                        "string.length": ">=1"
+                    }
+                ],
+                "function": [
+                    {
+                        "is.array": true
+                    }
+                ]
+            }
+        },
+        "put": {
+            "validate": {
+                "uuid": [
+                    {
+                        "is.uuid": true
+                    }
+                ],
+                "key": [
+                    {
+                        "is.unique": {
+                            "class": "Keyboard",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-key.btree",
+                            "attribute": [
+                                "url",
+                                "key"
+                            ]
+                        }
+                    },
+                    {
+                        "string.length" : ">=1"
+                    }
+                ],
+                "url": [
+                    {
+                        "string.length": ">=1"
+                    }
+                ],
+                "function": [
+                    {
+                        "is.array": true
+                    }
+                ]
+            }
+        },
+        "patch": {
+            "validate": {
+                "uuid": [
+                    {
+                        "is.uuid": true
+                    }
+                ],
+                "?key": [
+                    {
+                        "is.unique": {
+                            "class": "Keyboard",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-key.btree",
+                            "attribute": [
+                                "url",
+                                "key"
+                            ]
+                        }
+                    },
+                    {
+                        "string.length" : ">=1"
+                    }
+                ],
+                "?url": [
+                    {
+                        "string.length": ">=1"
+                    }
+                ],
+                "?function": [
+                    {
+                        "is.array": true
+                    }
+                ]
+            }
+        }
+    }
+}

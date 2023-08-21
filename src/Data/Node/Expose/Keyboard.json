@@ -1,0 +1,102 @@
+{
+    "Keyboard": {
+        "sync": {
+            "expose": [
+                {
+                    "role": "ROLE_SYSTEM",
+                    "attributes": [
+                        "uuid",
+                        "url",
+                        "key",
+                        "function",
+                        "#class"
+                    ]
+                }
+            ]
+        },
+        "list": {
+            "expose": [
+                {
+                    "role": "ROLE_SYSTEM",
+                    "attributes": [
+                        "uuid",
+                        "url",
+                        "key",
+                        "function",
+                        "#class"
+                    ]
+                }
+            ]
+        },
+        "read": {
+            "expose": [
+                {
+                    "role": "ROLE_SYSTEM",
+                    "attributes": [
+                        "uuid",
+                        "url",
+                        "key",
+                        "function",
+                        "#class"
+                    ]
+                }
+            ]
+        },
+        "record": {
+            "expose": [
+                {
+                    "role": "ROLE_SYSTEM",
+                    "attributes": [
+                        "uuid",
+                        "url",
+                        "key",
+                        "function",
+                        "#class"
+                    ]
+                }
+            ]
+        },
+        "create": {
+            "expose": [
+                {
+                    "role": "ROLE_SYSTEM",
+                    "attributes": [
+                        "uuid",
+                        "url",
+                        "key",
+                        "function",
+                        "#class"
+                    ]
+                }
+            ]
+        },
+        "put": {
+            "expose": [
+                {
+                    "role": "ROLE_SYSTEM",
+                    "attributes": [
+                        "uuid",
+                        "url",
+                        "key",
+                        "function",
+                        "#class"
+                    ]
+                }
+            ]
+        },
+        "patch": {
+            "expose": [
+                {
+                    "role": "ROLE_SYSTEM",
+                    "attributes": [
+                        "uuid",
+                        "url",
+                        "key",
+                        "function",
+                        "#class"
+                    ]
+                }
+            ]
+        }
+    }
+}
