@@ -315,13 +315,21 @@ class Cli extends Controller {
         }
     }
 
+    /**
+     * @throws Exception
+     */
     private static function scan(App $object): array
     {
         $scan = [
             'module' => [],
             'submodule' => [],
             'command' => [],
-            'subcommand' => []
+            'subcommand' => [],
+            'action' => [],
+            'subaction' => [],
+            'category' => [],
+            'subcategory' => []
+
         ];
         $url = $object->config('controller.dir.view');
         if(!Dir::exist($url)){
