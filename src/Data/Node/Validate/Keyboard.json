@@ -75,9 +75,9 @@
                         "is.uuid": true
                     }
                 ],
-                "?command": [
+                "command": [
                     {
-                        "is.unique": {
+                        "?is.unique": {
                             "class": "Keyboard",
                             "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-command.btree",
                             "attribute": [
@@ -87,17 +87,17 @@
                         }
                     },
                     {
-                        "string.length" : ">=1"
+                        "?string.length" : ">=1"
                     }
                 ],
-                "?url": [
+                "url": [
                     {
-                        "string.length": ">=1"
+                        "?string.length": ">=1"
                     }
                 ],
-                "?function": [
+                "function": [
                     {
-                        "is.array": true
+                        "?is.array": true
                     }
                 ]
             }
