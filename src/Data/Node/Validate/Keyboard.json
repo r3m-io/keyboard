@@ -7,14 +7,14 @@
                         "is.uuid": true
                     }
                 ],
-                "key": [
+                "command": [
                     {
                         "is.unique": {
                             "class": "Keyboard",
-                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-key.btree",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-command.btree",
                             "attribute": [
                                 "url",
-                                "key"
+                                "command"
                             ]
                         }
                     },
@@ -41,14 +41,14 @@
                         "is.uuid": true
                     }
                 ],
-                "key": [
+                "command": [
                     {
                         "is.unique": {
                             "class": "Keyboard",
-                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-key.btree",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-command.btree",
                             "attribute": [
                                 "url",
-                                "key"
+                                "command"
                             ]
                         }
                     },
@@ -75,14 +75,14 @@
                         "is.uuid": true
                     }
                 ],
-                "?key": [
+                "?command": [
                     {
                         "is.unique": {
                             "class": "Keyboard",
-                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-key.btree",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-command.btree",
                             "attribute": [
                                 "url",
-                                "key"
+                                "command"
                             ]
                         }
                     },

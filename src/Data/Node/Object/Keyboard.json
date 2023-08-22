@@ -8,7 +8,7 @@
         "type": "string"
       },
       {
-        "name": "key",
+        "name": "command",
         "type": "string"
       },
       {
@@ -26,10 +26,10 @@
     ]
   },
   "sort": [
-    "url, key"
+    "url, command"
   ],
   "is.unique": [
-    "url, key"
+    "url, command"
   ],
   "sync" : {
     "interval": 60
