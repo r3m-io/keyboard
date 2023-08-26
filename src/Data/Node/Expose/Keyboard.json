@@ -6,7 +6,7 @@
                     "role": "ROLE_SYSTEM",
                     "attributes": [
                         "uuid",
-                        "url",
+                        "application",
                         "command",
                         "function",
                         "#class"
@@ -20,7 +20,7 @@
                     "role": "ROLE_SYSTEM",
                     "attributes": [
                         "uuid",
-                        "url",
+                        "application",
                         "command",
                         "function",
                         "#class"
@@ -34,7 +34,7 @@
                     "role": "ROLE_SYSTEM",
                     "attributes": [
                         "uuid",
-                        "url",
+                        "application",
                         "command",
                         "function",
                         "#class"
@@ -48,7 +48,7 @@
                     "role": "ROLE_SYSTEM",
                     "attributes": [
                         "uuid",
-                        "url",
+                        "application",
                         "command",
                         "function",
                         "#class"
@@ -62,7 +62,7 @@
                     "role": "ROLE_SYSTEM",
                     "attributes": [
                         "uuid",
-                        "url",
+                        "application",
                         "command",
                         "function",
                         "#class"
@@ -76,7 +76,7 @@
                     "role": "ROLE_SYSTEM",
                     "attributes": [
                         "uuid",
-                        "url",
+                        "application",
                         "command",
                         "function",
                         "#class"
@@ -90,7 +90,7 @@
                     "role": "ROLE_SYSTEM",
                     "attributes": [
                         "uuid",
-                        "url",
+                        "application",
                         "command",
                         "function",
                         "#class"

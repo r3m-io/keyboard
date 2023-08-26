@@ -11,9 +11,9 @@
                     {
                         "is.unique": {
                             "class": "Keyboard",
-                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-command.btree",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Application-command.btree",
                             "attribute": [
-                                "url",
+                                "application:application.uuid",
                                 "command"
                             ]
                         }
@@ -22,9 +22,9 @@
                         "string.length" : ">=1"
                     }
                 ],
-                "url": [
+                "application": [
                     {
-                        "string.length": ">=1"
+                        "is.uuid": true
                     }
                 ],
                 "function": [
@@ -45,9 +45,9 @@
                     {
                         "is.unique": {
                             "class": "Keyboard",
-                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-command.btree",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Application-command.btree",
                             "attribute": [
-                                "url",
+                                "application:application.uuid",
                                 "command"
                             ]
                         }
@@ -56,9 +56,9 @@
                         "string.length" : ">=1"
                     }
                 ],
-                "url": [
+                "application": [
                     {
-                        "string.length": ">=1"
+                        "is.uuid": true
                     }
                 ],
                 "function": [
@@ -79,9 +79,9 @@
                     {
                         "is.unique": {
                             "class": "Keyboard",
-                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Url-command.btree",
+                            "url": "{{config('project.dir.data')}}Node\/BinaryTree\/Keyboard\/Asc\/Asc\/Application-command.btree",
                             "attribute": [
-                                "url",
+                                "application:application.uuid",
                                 "command"
                             ]
                         }
@@ -90,9 +90,9 @@
                         "string.length" : ">=1"
                     }
                 ],
-                "?url": [
+                "?application": [
                     {
-                        "string.length": ">=1"
+                        "is.uuid": true
                     }
                 ],
                 "?function": [

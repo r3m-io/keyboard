@@ -4,7 +4,7 @@
     "type": "object",
     "property": [
       {
-        "name": "url",
+        "name": "application",
         "type": "string"
       },
       {
@@ -26,10 +26,17 @@
     ]
   },
   "sort": [
-    "url, command"
+    "application, command"
   ],
   "is.unique": [
-    "url, command"
+    "application, command"
+  ],
+  "relation": [
+    {
+      "type": "one-one",
+      "class": "Application",
+      "attribute": "application"
+    }
   ],
   "sync" : {
     "interval": 60
